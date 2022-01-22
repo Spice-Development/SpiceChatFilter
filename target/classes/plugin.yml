@@ -1,0 +1,6 @@
+name: SpiceCF
+version: '1.0-SNAPSHOT'
+main: xyz.spicedev.spicecf.SpiceCF
+authors: [ SpiceDev ]
+description: SpiceDev basic chat filter
+website: SpiceDev.xyz
