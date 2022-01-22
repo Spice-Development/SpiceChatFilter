@@ -4,3 +4,8 @@ main: xyz.spicedev.spicecf.SpiceCF
 authors: [ SpiceDev ]
 description: SpiceDev basic chat filter
 website: SpiceDev.xyz
+commands:
+  tscf:
+    description: Toggles the chat filter (WIP)
+    permission: scf.toggle
+    usage: "Usage: /tscf"

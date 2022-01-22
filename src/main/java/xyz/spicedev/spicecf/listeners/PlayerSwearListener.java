@@ -130,6 +130,9 @@ public class PlayerSwearListener implements Listener {
             player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
         }
 
+        if (message.toLowerCase(Locale.ROOT).contains("ez")) {
+            event.setCancelled(true);
+            player.kickPlayer(translate("&cSpiceCF &7/ &dToxic behaviour can't be much fun now can it?"));
+        }
     }
-
 }
