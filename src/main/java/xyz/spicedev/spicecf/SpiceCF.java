@@ -20,6 +20,8 @@ public final class SpiceCF extends JavaPlugin implements Listener {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 
+    public static boolean toggled = true;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -40,7 +42,11 @@ public final class SpiceCF extends JavaPlugin implements Listener {
             if (sender instanceof Player) {
                 if (sender.hasPermission("scf.toggle")) {
                     Player player = (Player) sender;
-                    player.sendMessage("&cSpiceCF &7/ &dSorry, this command is not yet available &e(WIP)");
+                    player.sendMessage(translate("&cSpiceCF &7/ &fToggled SCF"));
+
+                    // The one line that makes the whole command work
+
+                    toggled = !toggled;
                 }
 
             }

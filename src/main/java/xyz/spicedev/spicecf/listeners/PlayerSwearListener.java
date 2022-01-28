@@ -7,12 +7,17 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.server.ServerCommandEvent;
+import xyz.spicedev.spicecf.SpiceCF;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
 import static org.bukkit.Bukkit.getServer;
 
 public class PlayerSwearListener implements Listener {
+
+    // This translates all the color codes into the normal &<number / letter>
 
     public String translate(final String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
@@ -20,119 +25,30 @@ public class PlayerSwearListener implements Listener {
 
     @EventHandler
     public void onPlayerChat(PlayerChatEvent event) {
-        String message = event.getMessage();
+        if (!SpiceCF.toggled)
+            return;
 
+        // So if the chat filter is not toggled, it doesn't do anything
+
+        String message = event.getMessage();
         Player player = event.getPlayer();
 
-        if (message.toLowerCase(Locale.ROOT).contains("fuck")) {
-            event.setCancelled(true);
-           //getServer().dispatchCommand(getServer().getConsoleSender(), "kick");
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
+        // Yes I am making the whole process in a listener shut
 
-        if (message.toLowerCase(Locale.ROOT).contains("shit")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
+        ArrayList<String> notgudwords = new ArrayList<String>();
 
-        if (message.toLowerCase(Locale.ROOT).contains("nigga")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
+        // All blocked words go here to all you people who want to use this in your own projects
 
-        if (message.toLowerCase(Locale.ROOT).contains("nigger")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
+        Collections.addAll(notgudwords, "fuck", "nigga", "shit", "fanny", "penis", "nigger", "ez", "bitch", "5170", "dortware", "dick", "dickhead", "fuk", "cunt", "redesky", "intent.store", "intent store", "rise client", "aether client", "flux client", "moon client", "novoline client", "rose client", "dortware client", "vape client", "vape v4", "vapev4", "vape lite", "bastard", "fuckwit", "arsehole", "asshole", "tit", "twat", "pussy", "cock", "motherfucker", "mother fucker", "wanker");
+        for (String s : notgudwords) {
+            if (message.toLowerCase().contains(s)) {
 
-        if (message.toLowerCase(Locale.ROOT).contains("bastard")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
+                // This is where the message gets cancelled and a message gets sent to the player
 
-        if (message.toLowerCase(Locale.ROOT).contains("fuckwit")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("dickhead")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("bitch")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("arsehole")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("asshole")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("cunt")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("tit")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("fanny")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("faggot")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("twat")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("pussy")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("cock")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("dick")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("motherfucker")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("wanker")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("bullshit")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dPlease do not use inappropriate language on this server."));
-        }
-
-        if (message.toLowerCase(Locale.ROOT).contains("ez")) {
-            event.setCancelled(true);
-            player.kickPlayer(translate("&cSpiceCF &7/ &dToxic behaviour can't be much fun now can it?"));
+                event.setCancelled(true);
+                player.sendMessage(translate("&cSpiceCF &7/ &fYour message &a'"+ message +"' &fwas flagged as not appropriate for this server, it was not sent."));
+                break;
+            }
         }
     }
 }
