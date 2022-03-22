@@ -1,7 +1,6 @@
 package xyz.spicedev.spicecf;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -11,11 +10,6 @@ import xyz.spicedev.spicecf.listeners.PlayerSwearListener;
 
 public final class SpiceCF extends JavaPlugin implements Listener {
     public FileConfiguration globalConfig = this.getConfig();
-
-
-    public String translate(final String string) {
-        return ChatColor.translateAlternateColorCodes('&', string);
-    }
 
     public static boolean toggled = true;
 

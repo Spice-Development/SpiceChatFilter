@@ -1,6 +1,5 @@
 package xyz.spicedev.spicecf.listeners;
 
-import java.util.Iterator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -8,16 +7,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import xyz.spicedev.spicecf.SpamHelper;
+import java.util.Iterator;
 
 public class PlayerSpamListener implements Listener {
-    @EventHandler
-
-    // Did the funny colour code thingy
-
     public String translate(final String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 
+    @EventHandler
     public void playerChat(AsyncPlayerChatEvent event) {
         if (SpamHelper.enableSCF) {
             Player player = event.getPlayer();
