@@ -1,11 +1,32 @@
 name: SpiceCF
-version: '1.4'
+version: '1.5'
 main: xyz.spicedev.spicecf.SpiceCF
 authors: [ SpiceDev ]
 description: SpiceDev basic chat filter
 website: SpiceDev.xyz
 commands:
-  tscf:
-    description: Toggles the chat filter (WIP)
-    permission: scf.toggle
-    usage: "Usage: /tscf"
+  scf:
+    description: Main command for SCF
+    usage: /<command>
+    permission-message: You need the permission scf.staff to use this command
+  scf help:
+    description: Displays the available commands
+    usage: /<command>
+  scf reload:
+    description: Reloads SCF
+    usage: /<command>
+  scf settimer:
+    description: Sets the antispam timer in seconds
+    usage: /<command>
+    permission-message: You need the permission scf.staff to use this command
+  scf setenable:
+    description: Enables or disables SCF
+    usage: /<command>
+    permission-message: You need the permission scf.staff to use this command
+permissions:
+    scf.*:
+      description: Wildcard permission for SCF
+      children:
+        scf.staff: true
+    scf.staff:
+      description: Generic staff permission for SCF, access to all features

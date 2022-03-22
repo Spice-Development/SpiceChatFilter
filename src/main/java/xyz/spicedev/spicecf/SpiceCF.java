@@ -1,20 +1,17 @@
 package xyz.spicedev.spicecf;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Server;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerChatEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.server.ServerCommandEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import xyz.spicedev.spicecf.listeners.PlayerSpamListener;
 import xyz.spicedev.spicecf.listeners.PlayerSwearListener;
 
 public final class SpiceCF extends JavaPlugin implements Listener {
+    public FileConfiguration globalConfig = this.getConfig();
+
 
     public String translate(final String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
@@ -31,29 +28,16 @@ public final class SpiceCF extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new PlayerSwearListener(), this);
 
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
-        // Toggles the chat filter (/tscf)
-        if (command.getName().equalsIgnoreCase("tscf")) {
-
-            if (sender instanceof Player) {
-                if (sender.hasPermission("scf.toggle")) {
-                    Player player = (Player) sender;
-                    player.sendMessage(translate("&cSpiceCF &7/ &fToggled SCF"));
-
-                    // The one line that makes the whole command work
-
-                    toggled = !toggled;
-                }
-
-            }
-
+        if (this.getConfig().getName() != "config.yml") {
+            this.getConfig().options().copyDefaults(true);
+            this.saveConfig();
         }
-        return true;
+
+        this.getCommand("scf").setExecutor(new SpiceCommand());
+        this.getServer().getPluginManager().registerEvents(new PlayerSpamListener(), this);
     }
+
+
 
     @Override
     public void onDisable() {
@@ -61,5 +45,14 @@ public final class SpiceCF extends JavaPlugin implements Listener {
 
         System.out.println("SpiceCF / Plugin disabled");
     }
+    public static void registerEvents(Plugin plugin, Listener... listeners) {
+        Listener[] var5 = listeners;
+        int var4 = listeners.length;
 
+        for(int var3 = 0; var3 < var4; ++var3) {
+            Listener listener = var5[var3];
+            Bukkit.getServer().getPluginManager().registerEvents(listener, plugin);
+        }
+
+    }
 }

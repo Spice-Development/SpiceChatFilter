@@ -1,2 +1,5 @@
 xyz\spicedev\spicecf\SpiceCF.class
+xyz\spicedev\spicecf\SpiceCommand.class
+xyz\spicedev\spicecf\listeners\PlayerSpamListener.class
 xyz\spicedev\spicecf\listeners\PlayerSwearListener.class
+xyz\spicedev\spicecf\SpamHelper.class

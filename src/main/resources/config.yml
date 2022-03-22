@@ -1,0 +1,5 @@
+#########################################
+#  The configuration file for SpiceCF!  #
+#########################################
+EnableSCF: true
+AntiSpamTimer: 2
