@@ -9,7 +9,7 @@ import xyz.spicedev.spicecf.ConfigHelper;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class PlayerSwearListener implements Listener {
+public class PlayerLinkListener implements Listener {
 
     // This translates all the color codes into the normal &<number / letter>
 
@@ -21,7 +21,7 @@ public class PlayerSwearListener implements Listener {
     public void onPlayerChat(PlayerChatEvent event) {
         if (ConfigHelper.enableSCF) {
             Player player = event.getPlayer();
-            if (!player.hasPermission("scf.bypass.filter")) {
+            if (!player.hasPermission("scf.bypass.links")) {
 
                 // So if the chat filter is not toggled, it doesn't do anything
 
@@ -34,7 +34,7 @@ public class PlayerSwearListener implements Listener {
 
                 // All blocked words go here to all you people who want to use this in your own projects
 
-                Collections.addAll(notgudwords, "fuck", "faggot", "fag", "nigga", "shet", "sheit", "shiet", "shit", "fanny", "penis", "nigger", "ez", "bitch", "realtrippy", "dortware", "dick", "dickhead", "fuk", "cunt", "redesky", "intent store", "rise client", "aether client", "flux client", "moon client", "novoline client", "rose client", "dortware client", "vape client", "vape v4", "vapev4", "vape lite", "bastard", "fuckwit", "arsehole", "asshole", "tit", "twat", "pussy", "cock", "motherfucker", "mother fucker", "wanker", "niga", "fuk", "fuc", "stitch client", "primecraft", "prime craft", "ddos", "dos", "dox", "uterus", "testicles", "testies", "testicular", "whydidyoutypethis");
+                Collections.addAll(notgudwords, ".com", ".net", ".org", ".xyz", ".live", ".store", ".host", ".web", ".monday", ".tuesday", ".wednesday", ".thursday", ".friday", ".saturday", ".sunday", ".cool", ".pog", ".games", ".pl", ".ml", ".cf", ".uk", ".gov", ".co", ".hub", ".ua", ".be", ".ro", ".edu", ".get", ".help", ".info");
                 for (String s : notgudwords) {
                     if (message.toLowerCase().contains(s)) {
 

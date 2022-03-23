@@ -1,5 +1,8 @@
-#########################################
-#  The configuration file for SpiceCF!  #
-#########################################
+#
+# Spice Chat Filter, made by SpiceDev.
+# https://www.spigotmc.org/resources/spice-chat-filter-scf.99400/
+# https://github.com/Spice-Development/SpiceChatFilter
+#
+
 EnableSCF: true
 AntiSpamTimer: 2

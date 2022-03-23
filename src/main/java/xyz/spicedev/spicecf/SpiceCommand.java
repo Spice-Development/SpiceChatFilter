@@ -8,17 +8,16 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class SpiceCommand implements CommandExecutor {
-
-    // A quick note before you read this...
-    // My translation for colour codes doesn't work on here for some reason so, I've resorted to the "hard way".
-    // If you're new to java and Minecraft plugin development, good luck reading this.
+    public String translate(final String string) {
+        return ChatColor.translateAlternateColorCodes('&', string);
+    }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("scf") && sender instanceof Player) {
             Player player = (Player)sender;
             if (!player.hasPermission("scf.staff")) {
                 player.sendMessage("");
-                player.sendMessage(ChatColor.RED + "SpiceCF " + ChatColor.GRAY + "/ " + ChatColor.WHITE + "You need the permission " + ChatColor.YELLOW + "'scf.staff' " + ChatColor.WHITE + "to execute this command.");
+                player.sendMessage(translate("&cSpiceCF &7/ &fYou need the permission &escf.staff &fto execute this command."));
                 player.sendMessage("");
                 return false;
             }
@@ -34,8 +33,8 @@ public class SpiceCommand implements CommandExecutor {
             }
 
             if (args[0].equalsIgnoreCase("reload") && player.hasPermission("scf.staff")) {
-                SpamHelper.enableSCF = Bukkit.getPluginManager().getPlugin("SpiceCF").getConfig().getBoolean("EnableSCF");
-                SpamHelper.AntiSpamTimer = Bukkit.getPluginManager().getPlugin("SpiceCF").getConfig().getInt("SpamSeconds");
+                ConfigHelper.enableSCF = Bukkit.getPluginManager().getPlugin("SpiceCF").getConfig().getBoolean("EnableSCF");
+                ConfigHelper.AntiSpamTimer = Bukkit.getPluginManager().getPlugin("SpiceCF").getConfig().getInt("SpamSeconds");
                 Bukkit.getPluginManager().getPlugin("SpiceCF").reloadConfig();
                 player.sendMessage("");
                 player.sendMessage(ChatColor.RED + "SpiceCF " + ChatColor.GRAY + "/ " + ChatColor.WHITE + "The config was successfully reloaded.");

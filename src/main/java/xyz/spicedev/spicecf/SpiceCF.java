@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import xyz.spicedev.spicecf.listeners.PlayerLinkListener;
 import xyz.spicedev.spicecf.listeners.PlayerSpamListener;
 import xyz.spicedev.spicecf.listeners.PlayerSwearListener;
 
@@ -21,6 +22,8 @@ public final class SpiceCF extends JavaPlugin implements Listener {
 
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new PlayerSwearListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerLinkListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerSpamListener(), this);
 
         if (this.getConfig().getName() != "config.yml") {
             this.getConfig().options().copyDefaults(true);
@@ -28,7 +31,6 @@ public final class SpiceCF extends JavaPlugin implements Listener {
         }
 
         this.getCommand("scf").setExecutor(new SpiceCommand());
-        this.getServer().getPluginManager().registerEvents(new PlayerSpamListener(), this);
     }
 
 

@@ -24,9 +24,18 @@ commands:
     usage: /<command>
     permission-message: You need the permission scf.staff to use this command
 permissions:
-    scf.*:
-      description: Wildcard permission for SCF
-      children:
-        scf.staff: true
-    scf.staff:
-      description: Generic staff permission for SCF, access to all features
+  scf.*:
+    description: Wildcard permission for SCF
+    children:
+      scf.staff: true
+      scf.bypass.links: true
+      scf.bypass.spam: true
+      scf.bypass.filter: true
+  scf.staff:
+    description: Generic staff permission for SCF, access to all features
+  scf.bypass.links:
+    description: Link filter bypass
+  scf.bypass.spam:
+    description: Spam filter bypass
+  scf.bypass.filter:
+    description: General filter bypass
