@@ -12,6 +12,8 @@ public class SpiceCommand implements CommandExecutor {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 
+    // I wrote all of this before adding the translate line thingey so basically you have to deal with this epic (and totally not stupid) half translated and half not code
+
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("scf") && sender instanceof Player) {
             Player player = (Player)sender;
