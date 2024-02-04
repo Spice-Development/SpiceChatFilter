@@ -34,7 +34,7 @@ public class PlayerSwearListener implements Listener {
 
                 // All blocked words go here to all you people who want to use this in your own projects
 
-                Collections.addAll(notgudwords, "fuck", "faggot", "fag", "nigga", "shet", "sheit", "shiet", "shit", "fanny", "penis", "nigger", "ez", "bitch", "realtrippy", "dortware", "dick", "dickhead", "fuk", "cunt", "redesky", "intent store", "rise client", "aether client", "flux client", "moon client", "novoline client", "rose client", "dortware client", "vape client", "vape v4", "vapev4", "vape lite", "bastard", "fuckwit", "arsehole", "asshole", "tit", "twat", "pussy", "cock", "motherfucker", "mother fucker", "wanker", "niga", "fuk", "fuc", "stitch client", "primecraft", "prime craft", "ddos", "dos", "dox", "uterus", "testicles", "testies", "testicular", "whydidyoutypethis");
+                Collections.addAll(notgudwords, "fuck", "faggot", "fag", "nigga", "shet", "sheit", "shiet", "shit", "fanny", "penis", "nigger", "ez", "bitch", "dortware", "dick", "dickhead", "fuk", "cunt", "redesky", "intent store", "rise client", "aether client", "flux client", "moon client", "novoline client", "rose client", "dortware client", "vape client", "vape v4", "vapev4", "vape lite", "bastard", "fuckwit", "arsehole", "asshole", "tit", "twat", "pussy", "cock", "motherfucker", "mother fucker", "wanker", "niga", "fuk", "fuc", "stitch client", "primecraft", "prime craft", "ddos", "dos", "dox", "uterus", "testicles", "testies", "testicular", "whydidyoutypethis");
                 for (String s : notgudwords) {
                     if (message.toLowerCase().contains(s)) {
 
